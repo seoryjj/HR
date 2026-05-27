@@ -14,14 +14,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .hero p{color:#85B7EB;font-size:13px;}
 .hero-meta{display:flex;gap:10px;margin-top:1rem;flex-wrap:wrap;}
 .badge-hero{background:rgba(255,255,255,0.12);color:#B5D4F4;font-size:11px;padding:4px 12px;border-radius:20px;border:0.5px solid rgba(255,255,255,0.2);display:inline-flex;align-items:center;gap:5px;}
+/* 사용안내 */
+.guide-bar{background:#EBF4FF;border:0.5px solid #B5D4F4;border-radius:10px;padding:10px 16px;margin-bottom:1.5rem;font-size:12px;color:#0C447C;display:flex;align-items:center;gap:8px;}
 /* 전사공통 */
 .common-section{background:#1A2744;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;}
 .common-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
 .common-header-title{font-size:15px;font-weight:500;color:#fff;}
 .common-header-sub{font-size:11px;color:#85B7EB;margin-top:2px;}
 .common-goals{display:flex;flex-direction:column;gap:6px;}
-.common-goal{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;background:rgba(255,255,255,0.08);border:0.5px solid rgba(133,183,235,0.25);border-radius:8px;font-size:13px;color:#E8F4FF;line-height:1.55;}
-.common-num{font-size:11px;color:#85B7EB;min-width:18px;flex-shrink:0;padding-top:1px;}
+.common-goal{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;background:rgba(255,255,255,0.08);border:0.5px solid rgba(133,183,235,0.25);border-radius:8px;font-size:13px;color:#E8F4FF;line-height:1.55;cursor:pointer;transition:background .1s;}
+.common-goal:hover{background:rgba(255,255,255,0.15);}
+.common-goal-text{flex:1;}
+.copy-icon{font-size:14px;color:#85B7EB;flex-shrink:0;opacity:0.6;transition:opacity .1s;}
+.common-goal:hover .copy-icon{opacity:1;}
 /* 요약 */
 .summary-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem;}
 .sum-card{background:#fff;border-radius:10px;border:0.5px solid #E2E6EE;padding:14px;text-align:center;}
@@ -29,12 +34,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sum-lbl{font-size:11px;color:#9A9FAA;margin-top:2px;}
 /* 필터 */
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;}
-.filter-label{font-size:11px;color:#9A9FAA;margin-right:2px;white-space:nowrap;display:flex;align-items:center;gap:3px;}
+.filter-label{font-size:11px;color:#9A9FAA;margin-right:2px;display:flex;align-items:center;gap:3px;}
 .filter-btn{font-size:12px;padding:6px 14px;border-radius:20px;border:0.5px solid #D0D5DE;background:#fff;color:#5A6070;cursor:pointer;transition:all .15s;}
 .filter-btn:hover{background:#E6F1FB;color:#185FA5;border-color:#185FA5;}
 .filter-btn.active{background:#185FA5;color:#fff;border-color:#185FA5;}
-/* 겸직 배지 */
-.dual-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;background:#FAEEDA;color:#633806;border:0.5px solid #FAC775;margin-left:6px;vertical-align:middle;}
 /* 본부 카드 */
 .dept-section{background:#fff;border:0.5px solid #E2E6EE;border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;}
 .dept-section.dual-dept{border-color:#B5D4F4;border-width:1px;}
@@ -47,78 +50,96 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 /* 역할 그룹 */
 .role-group{margin-bottom:1rem;}
 .role-group:last-child{margin-bottom:0;}
-.role-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;margin-bottom:8px;}
-.role-공통{background:#E6F1FB;color:#0C447C;}
-.role-연구개발{background:#EAF3DE;color:#27500A;}
+.role-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.role-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;}
+.role-공통,.role-영업,.role-팀원{background:#E6F1FB;color:#0C447C;}
+.role-연구개발,.role-팀장{background:#EAF3DE;color:#27500A;}
 .role-업무자세{background:#F3E8FF;color:#4A1228;}
-.role-영업{background:#EAF3DE;color:#27500A;}
-.role-팀장{background:#EAF3DE;color:#27500A;}
-.role-팀원{background:#E6F1FB;color:#0C447C;}
 .role-PM{background:#FAEEDA;color:#633806;}
 .role-PL{background:#F3E8FF;color:#4A1228;}
 .role-개발자{background:#FCEBEB;color:#791F1F;}
-.role-실장{background:#F1EFE8;color:#444441;}
+.role-실장,.role-사업부서{background:#F1EFE8;color:#444441;}
+/* 역할별 전체 복사 버튼 */
+.btn-copy-role{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:4px 10px;border-radius:16px;border:0.5px solid #D0D5DE;background:#fff;color:#5A6070;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-copy-role:hover{background:#E6F1FB;color:#185FA5;border-color:#185FA5;}
+/* 목표 항목 */
 .goal-list{display:flex;flex-direction:column;gap:6px;}
-.goal-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#FAFBFC;border:0.5px solid #EEF0F5;border-radius:8px;font-size:13px;line-height:1.6;color:#1A2744;transition:background .1s,border-color .1s;}
+.goal-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#FAFBFC;border:0.5px solid #EEF0F5;border-radius:8px;font-size:13px;line-height:1.6;color:#1A2744;cursor:pointer;transition:background .1s,border-color .1s;position:relative;}
 .goal-item:hover{background:#EBF4FF;border-color:#B5D4F4;}
+.goal-item:hover .copy-hint{opacity:1;}
 .goal-num{font-size:11px;color:#9A9FAA;min-width:18px;padding-top:1px;font-weight:500;flex-shrink:0;}
+.goal-text{flex:1;}
+.copy-hint{font-size:11px;color:#185FA5;opacity:0;transition:opacity .15s;flex-shrink:0;display:flex;align-items:center;gap:3px;white-space:nowrap;}
+/* 복사 완료 토스트 */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1A2744;color:#fff;font-size:13px;padding:10px 20px;border-radius:24px;opacity:0;transition:all .25s;pointer-events:none;z-index:9999;display:flex;align-items:center;gap:6px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+/* 겸직 */
+.dual-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;background:#FAEEDA;color:#633806;border:0.5px solid #FAC775;margin-left:6px;vertical-align:middle;}
+.notice-box{padding:12px 14px;background:#FEF9F0;border:0.5px solid #FAC775;border-radius:8px;font-size:13px;color:#633806;display:flex;align-items:center;gap:8px;}
 .hidden{display:none!important;}
 .footer{text-align:center;padding:2rem 0 1rem;color:#9A9FAA;font-size:12px;}
-@media(max-width:600px){
-  .summary-bar{grid-template-columns:repeat(3,1fr);}
-  .hero{padding:1.5rem 1rem 1.25rem;border-radius:0;}
-  .dept-section{border-radius:8px;padding:1rem;}
-}
-@media print{
-  .filter-bar{display:none;}
-  .hero{border-radius:0;}
-  .dept-section{break-inside:avoid;}
-  .common-section{break-inside:avoid;}
-}
+@media print{.filter-bar,.guide-bar,.copy-hint,.btn-copy-role{display:none;}.hero{border-radius:0;}.dept-section{break-inside:avoid;}}
 </style>
 </head>
 <body>
 <div class="page">
 
-<!-- 히어로 -->
 <div class="hero">
   <h1><i class="ti ti-target" aria-hidden="true"></i> 2026 본부별 팀원 행동목표</h1>
-  <p>2026년 5월 27일 본부장 의견 취합</p>
+  <p>2026년 5월 27일 본부장 의견 </p>
   <div class="hero-meta">
-    <span class="badge-hero"><i class="ti ti-list-check" aria-hidden="true"></i> 전사 공통 5대 키워드</span>
-    <span class="badge-hero"><i class="ti ti-building" aria-hidden="true"></i> 8개 본부</span>
-    <span class="badge-hero"><i class="ti ti-users" aria-hidden="true"></i> 전 구성원</span>
+    <span class="badge-hero"><i class="ti ti-list-check"></i> 전사 공통 5대 키워드</span>
+    <span class="badge-hero"><i class="ti ti-building"></i> 8개 본부</span>
+    <span class="badge-hero"><i class="ti ti-users"></i> 전 구성원</span>
   </div>
+</div>
+
+<div class="guide-bar">
+  <i class="ti ti-bulb" style="font-size:16px;flex-shrink:0"></i>
+  <span><b>목표 항목을 클릭</b>하면 해당 문장이 복사됩니다. 역할 옆 <b>'전체 복사'</b> 버튼을 누르면 해당 역할의 목표가 전부 복사됩니다. 복사 후 개인목표 작성 화면에 붙여넣기 하세요.</span>
 </div>
 
 <!-- 전사 공통 -->
 <div class="common-section">
   <div class="common-header">
-    <i class="ti ti-star" style="font-size:22px;color:#85B7EB" aria-hidden="true"></i>
+    <i class="ti ti-star" style="font-size:22px;color:#85B7EB"></i>
     <div>
       <div class="common-header-title">전사 공통 행동목표 — 5대 키워드</div>
-      <div class="common-header-sub">모든 구성원이 함께 실천하는 행동 원칙</div>
+      <div class="common-header-sub">모든 구성원이 함께 실천하는 행동 원칙 · 클릭하면 복사됩니다</div>
     </div>
   </div>
   <div class="common-goals">
-    <div class="common-goal"><span class="common-num">1</span>AI를 기본 역량으로 삼아 모든 업무에 적용해 생산성을 높인다.</div>
-    <div class="common-goal"><span class="common-num">2</span>개발자가 아닌 도메인 전문가로 성장한다.</div>
-    <div class="common-goal"><span class="common-num">3</span>개인의 경험과 산출물을 조직 자산으로 만든다.</div>
-    <div class="common-goal"><span class="common-num">4</span>기술이 아닌 고객·사업 성과 관점에서 판단하고 행동한다.</div>
-    <div class="common-goal"><span class="common-num">5</span>정확한 소통으로 협업하고 공동의 목표를 달성한다.</div>
+    <div class="common-goal" onclick="copyText('AI를 기본 역량으로 삼아 모든 업무에 적용해 생산성을 높인다.',this)">
+      <span class="common-goal-text">AI를 기본 역량으로 삼아 모든 업무에 적용해 생산성을 높인다.</span>
+      <i class="ti ti-copy copy-icon"></i>
+    </div>
+    <div class="common-goal" onclick="copyText('개발자가 아닌 도메인 전문가로 성장한다.',this)">
+      <span class="common-goal-text">개발자가 아닌 도메인 전문가로 성장한다.</span>
+      <i class="ti ti-copy copy-icon"></i>
+    </div>
+    <div class="common-goal" onclick="copyText('개인의 경험과 산출물을 조직 자산으로 만든다.',this)">
+      <span class="common-goal-text">개인의 경험과 산출물을 조직 자산으로 만든다.</span>
+      <i class="ti ti-copy copy-icon"></i>
+    </div>
+    <div class="common-goal" onclick="copyText('기술이 아닌 고객·사업 성과 관점에서 판단하고 행동한다.',this)">
+      <span class="common-goal-text">기술이 아닌 고객·사업 성과 관점에서 판단하고 행동한다.</span>
+      <i class="ti ti-copy copy-icon"></i>
+    </div>
+    <div class="common-goal" onclick="copyText('정확한 소통으로 협업하고 공동의 목표를 달성한다.',this)">
+      <span class="common-goal-text">정확한 소통으로 협업하고 공동의 목표를 달성한다.</span>
+      <i class="ti ti-copy copy-icon"></i>
+    </div>
   </div>
 </div>
 
-<!-- 요약 -->
 <div class="summary-bar">
   <div class="sum-card"><div class="sum-num">8</div><div class="sum-lbl">본부</div></div>
   <div class="sum-card"><div class="sum-num">7</div><div class="sum-lbl">본부장</div></div>
   <div class="sum-card"><div class="sum-num">5+</div><div class="sum-lbl">전사공통 포함</div></div>
 </div>
 
-<!-- 필터 (본부명 기준) -->
 <div class="filter-bar">
-  <span class="filter-label"><i class="ti ti-filter" style="font-size:13px" aria-hidden="true"></i> 본부</span>
+  <span class="filter-label"><i class="ti ti-filter" style="font-size:13px"></i> 본부</span>
   <button class="filter-btn active" onclick="filterDept('all',this)">전체</button>
   <button class="filter-btn" onclick="filterDept('연구센터',this)">연구센터</button>
   <button class="filter-btn" onclick="filterDept('AI사업영업',this)">AI 사업영업</button>
@@ -132,33 +153,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div id="dept-list">
 
-<!-- 1. Vertical AI 플랫폼 연구센터 -->
+<!-- 1. 연구센터 -->
 <div class="dept-section" data-dept="연구센터">
   <div class="dept-header">
     <div class="dept-avatar">연</div>
     <div class="dept-title-wrap">
       <div class="dept-title">Vertical AI 플랫폼 연구센터</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 엄태덕 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 엄태덕 본부장</div>
     </div>
     <span class="dept-count">9개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-연구개발"><i class="ti ti-flask" aria-hidden="true"></i> 연구개발</div>
+    <div class="role-header">
+      <div class="role-tag role-연구개발"><i class="ti ti-flask"></i> 연구개발</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>협력을 통해 실질적 사업 성과를 창출한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>시장의 속도에 맞추어 성과물을 적시에 제공한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>마지막 품질 1%를 끌어올리는 완성도에 집중한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>익숙한 기술에 안주하지 않고 새로운 기술을 적용·검증해 조직에 기여한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">협력을 통해 실질적 사업 성과를 창출한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">시장의 속도에 맞추어 성과물을 적시에 제공한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">마지막 품질 1%를 끌어올리는 완성도에 집중한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">익숙한 기술에 안주하지 않고 새로운 기술을 적용·검증해 조직에 기여한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-업무자세"><i class="ti ti-mood-smile" aria-hidden="true"></i> 업무자세</div>
+    <div class="role-header">
+      <div class="role-tag role-업무자세"><i class="ti ti-mood-smile"></i> 업무자세</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>정리·확인·조율로 정확한 커뮤니케이션을 실천한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>공동의 목표를 위해 역할 경계 없이 기여한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>일과 조직을 키우는 방식으로 개인 가치를 높인다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>업무 간 점·선·면을 연결해 확산·효율화에 기여한다.</div>
-      <div class="goal-item"><span class="goal-num">5</span>동료에 대한 이해와 배려를 통해 성과를 만들어낸다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">정리·확인·조율로 정확한 커뮤니케이션을 실천한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">공동의 목표를 위해 역할 경계 없이 기여한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">일과 조직을 키우는 방식으로 개인 가치를 높인다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">업무 간 점·선·면을 연결해 확산·효율화에 기여한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">5</span><span class="goal-text">동료에 대한 이해와 배려를 통해 성과를 만들어낸다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
@@ -169,204 +196,288 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="dept-avatar">영</div>
     <div class="dept-title-wrap">
       <div class="dept-title">AI 사업영업본부</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 이세연 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 이세연 본부장</div>
     </div>
     <span class="dept-count">6개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-영업"><i class="ti ti-users" aria-hidden="true"></i> 영업 행동목표</div>
+    <div class="role-header">
+      <div class="role-tag role-영업"><i class="ti ti-users"></i> 영업 행동목표</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>새로운 고객을 끊임없이 발굴한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>고객과 발전적인 관계를 지속적으로 유지한다. (고객 이탈의 최종 책임은 영업)</div>
-      <div class="goal-item"><span class="goal-num">3</span>비즈니스 창출을 위한 컨설팅 역량을 갖춘다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>전략적 파트너사를 발굴하고 발전적인 관계를 유지한다.</div>
-      <div class="goal-item"><span class="goal-num">5</span>고객과 수행팀 간 원활한 업무 수행을 위한 리스크 관리 역할을 담당한다.</div>
-      <div class="goal-item"><span class="goal-num">6</span>대외적으로 회사 대표자로서의 품위와 행동을 갖춘다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">새로운 고객을 끊임없이 발굴한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">고객과 발전적인 관계를 지속적으로 유지한다. (고객 이탈의 최종 책임은 영업)</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">비즈니스 창출을 위한 컨설팅 역량을 갖춘다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">전략적 파트너사를 발굴하고 발전적인 관계를 유지한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">5</span><span class="goal-text">고객과 수행팀 간 원활한 업무 수행을 위한 리스크 관리 역할을 담당한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">6</span><span class="goal-text">대외적으로 회사 대표자로서의 품위와 행동을 갖춘다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 3. 통신AI 사업본부 -->
+<!-- 3. 통신AI -->
 <div class="dept-section" data-dept="통신AI">
   <div class="dept-header">
     <div class="dept-avatar">통</div>
     <div class="dept-title-wrap">
       <div class="dept-title">통신AI 사업본부</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 윤해룡 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 윤해룡 본부장</div>
     </div>
     <span class="dept-count">5개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-공통"><i class="ti ti-users" aria-hidden="true"></i> 팀원 공통</div>
+    <div class="role-header">
+      <div class="role-tag role-공통"><i class="ti ti-users"></i> 팀원 공통</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>AI를 활용한 개발 생산성을 향상시킨다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>AI를 도구가 아닌 팀원으로 소통하는 능력을 키운다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>도메인 지식을 재사용 가능한 스킬·스펙으로 명세화한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>고객 관점의 사고와 능동적 대응으로 고객 신뢰 기반을 확보한다.</div>
-      <div class="goal-item"><span class="goal-num">5</span>개발자가 아닌 도메인 전문가로 성장한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">AI를 활용한 개발 생산성을 향상시킨다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">AI를 도구가 아닌 팀원으로 소통하는 능력을 키운다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">도메인 지식을 재사용 가능한 스킬·스펙으로 명세화한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">고객 관점의 사고와 능동적 대응으로 고객 신뢰 기반을 확보한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">5</span><span class="goal-text">개발자가 아닌 도메인 전문가로 성장한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 4. 네트워크솔루션 AI 사업본부 -->
+<!-- 4. 네트워크솔루션 -->
 <div class="dept-section" data-dept="네트워크솔루션">
   <div class="dept-header">
     <div class="dept-avatar">네</div>
     <div class="dept-title-wrap">
       <div class="dept-title">네트워크솔루션 AI 사업본부</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 박문국 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 박문국 본부장</div>
     </div>
     <span class="dept-count">9개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-팀장"><i class="ti ti-crown" aria-hidden="true"></i> 팀장</div>
+    <div class="role-header">
+      <div class="role-tag role-팀장"><i class="ti ti-crown"></i> 팀장</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>기술과 개발은 사업 성과를 만들기 위한 수단임을 인식하고 모든 업무를 매출과 이익으로 연결한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>고객이 돈을 지불하는 가치, 즉 '팔리는 기술'에 집중한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>제안·구축·운영 전 과정에서 본인의 역할을 넘어 사업 성과 창출에 기여한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>작은 기회라도 사업으로 연결시키고 반복 가능한 구조로 확장한다.</div>
-      <div class="goal-item"><span class="goal-num">5</span>문제 발생 시 원인보다 해결과 재발 방지에 집중한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">기술과 개발은 사업 성과를 만들기 위한 수단임을 인식하고 모든 업무를 매출과 이익으로 연결한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">고객이 돈을 지불하는 가치, 즉 '팔리는 기술'에 집중한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">제안·구축·운영 전 과정에서 본인의 역할을 넘어 사업 성과 창출에 기여한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">작은 기회라도 사업으로 연결시키고 반복 가능한 구조로 확장한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">5</span><span class="goal-text">문제 발생 시 원인보다 해결과 재발 방지에 집중한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-팀원"><i class="ti ti-user" aria-hidden="true"></i> 팀원</div>
+    <div class="role-header">
+      <div class="role-tag role-팀원"><i class="ti ti-user"></i> 팀원</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>AI를 선택이 아닌 기본 역량으로 삼아 모든 업무에 적용해 생산성을 높인다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>기능 구현자가 아닌 문제 해결자이며 도메인 전문가로 성장한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>한 번 만든 것은 재사용 가능하게, 개인의 경험은 조직의 자산으로 만든다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>새로운 기술을 빠르게 실험하고 검증된 것은 표준으로 만든다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">AI를 선택이 아닌 기본 역량으로 삼아 모든 업무에 적용해 생산성을 높인다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">기능 구현자가 아닌 문제 해결자이며 도메인 전문가로 성장한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">한 번 만든 것은 재사용 가능하게, 개인의 경험은 조직의 자산으로 만든다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">새로운 기술을 빠르게 실험하고 검증된 것은 표준으로 만든다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 5. 공공·국방 AI 사업본부 -->
+<!-- 5. 공공·국방 -->
 <div class="dept-section" data-dept="공공국방">
   <div class="dept-header">
     <div class="dept-avatar">공</div>
     <div class="dept-title-wrap">
       <div class="dept-title">공공·국방 AI 사업본부</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 김대호 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 김대호 본부장</div>
     </div>
     <span class="dept-count">12개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-공통"><i class="ti ti-users" aria-hidden="true"></i> 팀 공통</div>
+    <div class="role-header">
+      <div class="role-tag role-공통"><i class="ti ti-users"></i> 팀 공통</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>기술이 아닌 고객의 사업 성과 관점에서 제안하고 행동한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>AI를 기본 역량으로 삼아 모든 업무에 에이전틱 코딩으로 AI 업무 전환한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>AI로 만든 산출물을 스킬·스펙으로 자산화한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>고객사 내부망(폐쇄망)에서 동작 가능한 자동화 산출물로 발전시킨다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">기술이 아닌 고객의 사업 성과 관점에서 제안하고 행동한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">AI를 기본 역량으로 삼아 모든 업무에 에이전틱 코딩으로 AI 업무 전환한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">AI로 만든 산출물을 스킬·스펙으로 자산화한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">고객사 내부망(폐쇄망)에서 동작 가능한 자동화 산출물로 발전시킨다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-팀장"><i class="ti ti-crown" aria-hidden="true"></i> 팀장·PM</div>
+    <div class="role-header">
+      <div class="role-tag role-팀장"><i class="ti ti-crown"></i> 팀장·PM</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>모든 프로젝트를 매출과 이익으로 연결한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>PMS로 개인과 프로젝트 업무를 계획하고 점검한다. (Plan!-Plan!-Plan!)</div>
-      <div class="goal-item"><span class="goal-num">3</span>다지역 수행 환경에서 팀원의 행동목표를 현장 기반으로 직접 설정한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>문제 발생 시 해결과 재발 방지에 집중한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">모든 프로젝트를 매출과 이익으로 연결한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">PMS로 개인과 프로젝트 업무를 계획하고 점검한다. (Plan!-Plan!-Plan!)</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">다지역 수행 환경에서 팀원의 행동목표를 현장 기반으로 직접 설정한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">문제 발생 시 해결과 재발 방지에 집중한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-팀원"><i class="ti ti-user" aria-hidden="true"></i> 팀원</div>
+    <div class="role-header">
+      <div class="role-tag role-팀원"><i class="ti ti-user"></i> 팀원</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>공공 분야 지식을 재사용 가능한 형태로 정리해 도메인 전문가로 성장한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>새로운 기술을 빠르게 실험하고 검증된 것은 팀 표준으로 만들어 공유한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>AI 에이전틱 코딩 도구를 매 스프린트에 적용·측정·기록한다.</div>
-      <div class="goal-item"><span class="goal-num">4</span>개인의 경험은 개인 자산이 아니라 조직의 자산임을 인식한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">공공 분야 지식을 재사용 가능한 형태로 정리해 도메인 전문가로 성장한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">새로운 기술을 빠르게 실험하고 검증된 것은 팀 표준으로 만들어 공유한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">AI 에이전틱 코딩 도구를 매 스프린트에 적용·측정·기록한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">개인의 경험은 개인 자산이 아니라 조직의 자산임을 인식한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 6. 산업AI 사업본부 -->
+<!-- 6. 산업AI -->
 <div class="dept-section" data-dept="산업AI">
   <div class="dept-header">
     <div class="dept-avatar">산</div>
     <div class="dept-title-wrap">
       <div class="dept-title">산업AI 사업본부</div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 정희동 본부장</div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 정희동 본부장</div>
     </div>
     <span class="dept-count">5개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-실장"><i class="ti ti-briefcase" aria-hidden="true"></i> 실장·팀장</div>
+    <div class="role-header">
+      <div class="role-tag role-실장"><i class="ti ti-briefcase"></i> 실장·팀장</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>업무가 원활하게 진행될 수 있도록 프로세스 및 리스크를 관리한다.</div>
-      <div class="goal-item"><span class="goal-num">2</span>문제 발생 시 주도적으로 해결한다. (위기 상황에서의 책임 의식과 리스크 해결력)</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">업무가 원활하게 진행될 수 있도록 프로세스 및 리스크를 관리한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">문제 발생 시 주도적으로 해결한다. (위기 상황에서의 책임 의식과 리스크 해결력)</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-팀원"><i class="ti ti-user" aria-hidden="true"></i> 사업부서 팀원</div>
+    <div class="role-header">
+      <div class="role-tag role-사업부서"><i class="ti ti-user"></i> 사업부서 팀원</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>주어진 업무를 주도적으로 실행한다. (오너십)</div>
-      <div class="goal-item"><span class="goal-num">2</span>팀장 또는 다른 팀원들과 능동적으로 소통한다.</div>
-      <div class="goal-item"><span class="goal-num">3</span>회의 및 의견 제시에 있어서 항상 긍정적인 자세로 임한다.</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">주어진 업무를 주도적으로 실행한다. (오너십)</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">팀장 또는 다른 팀원들과 능동적으로 소통한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">회의 및 의견 제시에 있어서 항상 긍정적인 자세로 임한다.</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 7. 엔터프라이즈 AI 사업본부 (양지웅 - 겸직 1/2) -->
+<!-- 7. 엔터프라이즈 AI 사업본부 -->
 <div class="dept-section dual-dept" data-dept="엔터프라이즈">
   <div class="dept-header">
     <div class="dept-avatar dual">엔</div>
     <div class="dept-title-wrap">
-      <div class="dept-title">엔터프라이즈 AI 사업본부 <span class="dual-badge"><i class="ti ti-stack-2" style="font-size:11px" aria-hidden="true"></i> 겸직 1/2</span></div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 양지웅 본부장 <span style="color:#B5D4F4;font-size:10px;">· 사업지원본부 겸직</span></div>
+      <div class="dept-title">엔터프라이즈 AI 사업본부 <span class="dual-badge"><i class="ti ti-stack-2" style="font-size:11px"></i> 겸직 1/2</span></div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 양지웅 본부장 <span style="color:#B5D4F4;font-size:10px;">· 사업지원본부 겸직</span></div>
     </div>
-    <span class="dept-count">18개 목표</span>
+    <span class="dept-count">13개 목표</span>
   </div>
   <div class="role-group">
-    <div class="role-tag role-PM"><i class="ti ti-chart-gantt" aria-hidden="true"></i> PM</div>
-    <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>프로젝트 손익 목표 달성 및 WBS 대비 진척률·지연 관리</div>
-      <div class="goal-item"><span class="goal-num">2</span>발주처 담당자 신뢰 확보 및 추가 과업 통제·변경 계약 관리</div>
-      <div class="goal-item"><span class="goal-num">3</span>실행 예산 내 효율적 비용 운영 및 협력사 성과·계약 준수 관리</div>
-      <div class="goal-item"><span class="goal-num">4</span>돌발 상황 신속 조치·해결 및 검수 승인·행정 절차 정확성 확보</div>
-      <div class="goal-item"><span class="goal-num">5</span>팀원 배분 및 동기 부여, 산출물 정리 및 인수인계 완결</div>
+    <div class="role-header">
+      <div class="role-tag role-PM"><i class="ti ti-chart-gantt"></i> PM</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
     </div>
-  </div>
-  <div class="role-group">
-    <div class="role-tag role-PL"><i class="ti ti-code" aria-hidden="true"></i> PL</div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>데이터 정합성 및 표준 가이드 수립, 팀 내 기술 병목 해소 가이드 제공</div>
-      <div class="goal-item"><span class="goal-num">2</span>즉시 구현 가능한 수준의 설계 및 품질 확보를 위한 기술 리뷰</div>
-      <div class="goal-item"><span class="goal-num">3</span>통합·성능 테스트 시나리오 리딩 및 코드 복잡도·유지보수성 관리</div>
-      <div class="goal-item"><span class="goal-num">4</span>소스 버전·배포 프로세스 안정화 및 최적 기술 도입 가이드 제공</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">프로젝트 손익 목표 달성 및 WBS 대비 진척률·지연 관리</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">발주처 담당자 신뢰 확보 및 추가 과업 통제·변경 계약 관리</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">실행 예산 내 효율적 비용 운영 및 협력사 성과·계약 준수 관리</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">돌발 상황 신속 조치·해결 및 검수 승인·행정 절차 정확성 확보</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">5</span><span class="goal-text">팀원 배분 및 동기 부여, 산출물 정리 및 인수인계 완결</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
   <div class="role-group">
-    <div class="role-tag role-개발자"><i class="ti ti-terminal" aria-hidden="true"></i> 개발자</div>
+    <div class="role-header">
+      <div class="role-tag role-PL"><i class="ti ti-code"></i> PL</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
     <div class="goal-list">
-      <div class="goal-item"><span class="goal-num">1</span>가독성 및 명명 규칙 준수, 보안 취약점 방지 가이드 준수</div>
-      <div class="goal-item"><span class="goal-num">2</span>결함의 신속하고 정확한 수정 및 배포 전 자가 검증 성실도 유지</div>
-      <div class="goal-item"><span class="goal-num">3</span>규격에 따른 안정적 API 연동 및 로직·쿼리 효율 최적화</div>
-      <div class="goal-item"><span class="goal-num">4</span>CI/CD 협업 및 환경 구축, 운영 가이드·명세 작성, 작업 단위 마감 기한 준수</div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">데이터 정합성 및 표준 가이드 수립, 팀 내 기술 병목 해소 가이드 제공</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">즉시 구현 가능한 수준의 설계 및 품질 확보를 위한 기술 리뷰</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">통합·성능 테스트 시나리오 리딩 및 코드 복잡도·유지보수성 관리</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">소스 버전·배포 프로세스 안정화 및 최적 기술 도입 가이드 제공</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+    </div>
+  </div>
+  <div class="role-group">
+    <div class="role-header">
+      <div class="role-tag role-개발자"><i class="ti ti-terminal"></i> 개발자</div>
+      <button class="btn-copy-role" onclick="copyRole(this)"><i class="ti ti-clipboard"></i> 전체 복사</button>
+    </div>
+    <div class="goal-list">
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">1</span><span class="goal-text">가독성 및 명명 규칙 준수, 보안 취약점 방지 가이드 준수</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">2</span><span class="goal-text">결함의 신속하고 정확한 수정 및 배포 전 자가 검증 성실도 유지</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">3</span><span class="goal-text">규격에 따른 안정적 API 연동 및 로직·쿼리 효율 최적화</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
+      <div class="goal-item" onclick="copyGoal(this)"><span class="goal-num">4</span><span class="goal-text">CI/CD 협업 및 환경 구축, 운영 가이드·명세 작성, 작업 단위 마감 기한 준수</span><span class="copy-hint"><i class="ti ti-copy"></i>복사</span></div>
     </div>
   </div>
 </div>
 
-<!-- 8. 사업지원본부 (양지웅 - 겸직 2/2) -->
+<!-- 8. 사업지원본부 -->
 <div class="dept-section dual-dept" data-dept="사업지원">
   <div class="dept-header">
     <div class="dept-avatar dual">지</div>
     <div class="dept-title-wrap">
-      <div class="dept-title">사업지원본부 <span class="dual-badge"><i class="ti ti-stack-2" style="font-size:11px" aria-hidden="true"></i> 겸직 2/2</span></div>
-      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px" aria-hidden="true"></i> 양지웅 본부장 <span style="color:#B5D4F4;font-size:10px;">· 엔터프라이즈 AI 사업본부 겸직</span></div>
+      <div class="dept-title">사업지원본부 <span class="dual-badge"><i class="ti ti-stack-2" style="font-size:11px"></i> 겸직 2/2</span></div>
+      <div class="dept-head"><i class="ti ti-user-circle" style="font-size:13px"></i> 양지웅 본부장 <span style="color:#B5D4F4;font-size:10px;">· 엔터프라이즈 AI 사업본부 겸직</span></div>
     </div>
-    <span class="dept-count">엔터프라이즈와 공통</span>
   </div>
-  <div style="padding:12px 14px;background:#FEF9F0;border:0.5px solid #FAC775;border-radius:8px;font-size:13px;color:#633806;display:flex;align-items:center;gap:8px;">
-    <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>
-    사업지원본부는 양지웅 본부장이 엔터프라이즈 AI 사업본부와 함께 겸직하고 있습니다. 행동목표는 엔터프라이즈 AI 사업본부와 동일하게 적용됩니다.
+  <div class="notice-box">
+    <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0"></i>
+    사업지원본부는 엔터프라이즈 AI 사업본부와 행동목표를 공유합니다. 위 엔터프라이즈 AI 사업본부 항목을 참고하세요.
   </div>
 </div>
 
-</div><!-- /dept-list -->
+</div>
 
 <div class="footer">2026 모비젠 본부별 팀원 행동목표 · 2026.05.27 · 작성: 이재은</div>
 </div>
 
+<!-- 토스트 -->
+<div class="toast" id="toast"><i class="ti ti-check"></i> <span id="toast-msg">복사되었습니다</span></div>
+
 <script>
+// 항목 1개 복사
+function copyGoal(el) {
+  const text = el.querySelector('.goal-text').innerText;
+  copyText(text, el);
+}
+
+// 역할 전체 복사
+function copyRole(btn) {
+  const group = btn.closest('.role-group');
+  const items = group.querySelectorAll('.goal-text');
+  const lines = Array.from(items).map((el, i) => (i+1) + '. ' + el.innerText);
+  const roleTag = group.querySelector('.role-tag').innerText.trim();
+  const text = '[' + roleTag + ']\n' + lines.join('\n');
+  copyText(text, btn);
+}
+
+// 전사공통 항목 복사
+function copyText(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    showToast(text.length > 30 ? '복사되었습니다 ✓' : '"' + text.slice(0,20) + '…" 복사됨');
+    // 클릭 피드백
+    if (el && el.style) {
+      el.style.background = '#D4EDDA';
+      el.style.borderColor = '#27AE60';
+      setTimeout(() => { el.style.background = ''; el.style.borderColor = ''; }, 800);
+    }
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('복사되었습니다 ✓');
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').innerText = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
 function filterDept(key, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
