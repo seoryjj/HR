@@ -18,7 +18,8 @@ def get_auth():
 
 # ── 페이지 내용 가져오기 ──────────────────────────
 def fetch_page():
-    url = f"{CONFLUENCE_URL}/rest/api/content/{CONFLUENCE_PAGE_ID}"
+    #url = f"{CONFLUENCE_URL}/rest/api/content/{CONFLUENCE_PAGE_ID}"
+    url = f"{CONFLUENCE_URL}/wiki/rest/api/content/{CONFLUENCE_PAGE_ID}"
     params = {"expand": "body.storage,version"}
     resp = requests.get(url, headers=get_auth(), params=params)
     resp.raise_for_status()
