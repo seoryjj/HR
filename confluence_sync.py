@@ -5,7 +5,7 @@ GitHub Actions에서 실행됨
 import os, json, re, requests, datetime
 from base64 import b64encode
 
-# ── 환경변수 ─────────────────────────────────────
+# ── 환경변수 ─────────────────────────────────────-
 CONFLUENCE_URL     = os.environ['CONFLUENCE_URL'].rstrip('/')
 CONFLUENCE_TOKEN   = os.environ['CONFLUENCE_TOKEN']
 CONFLUENCE_EMAIL   = os.environ['CONFLUENCE_EMAIL']
