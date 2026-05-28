@@ -1,0 +1,38 @@
+name: Confluence 행동목표 동기화
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 매일 오전 9시 (KST)
+  workflow_dispatch:        # 수동 실행 버튼
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Python 설치
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 의존성 설치
+        run: pip install requests
+
+      - name: Confluence 동기화
+        env:
+          CONFLUENCE_URL:     ${{ secrets.CONFLUENCE_URL }}
+          CONFLUENCE_TOKEN:   ${{ secrets.CONFLUENCE_TOKEN }}
+          CONFLUENCE_EMAIL:   ${{ secrets.CONFLUENCE_EMAIL }}
+          CONFLUENCE_PAGE_ID: ${{ secrets.CONFLUENCE_PAGE_ID }}
+        run: python3 confluence_sync.py
+
+      - name: 변경사항 커밋
+        run: |
+          git config user.name  "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add goals.json
+          git diff --staged --quiet || git commit -m "🔄 Confluence 동기화 $(date +'%Y-%m-%d %H:%M')"
+          git push
